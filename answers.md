@@ -1,11 +1,10 @@
-Your answers to the questions go here.
 
-###Prerequisites - Setup the environment
+###Prerequisites - Setup the environment###
 
-I began by setting up the Ubuntu virtual machine using vagrant. It was relatively straight forward. I followed the instructions here: https://www.vagrantup.com/intro/getting-started/
+I began by setting up the Ubuntu virtual machine using vagrant. It was relatively straight forward. I followed the instructions [here](https://www.vagrantup.com/intro/getting-started/)
 And set up 16.04 linux version. I then signed up for Datadog for the 14 day free trial.
 
-###Collecting Metrics:
+###Collecting Metrics:###
 Tags give you a way to distinguish between hosts. 
 First we to adapt the Agent configuration file. We can set up datadog by configuring datadog.yaml. Once inside the file you can modify the the tag section.
 Here is an example of mine:
@@ -24,9 +23,9 @@ It took me a couple of tries for it to appear on my host map but once it does. T
 
 Install a database on your VM
 
-I chose MySql.  This link gave me simple instructions on how to install mysql https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/
+I chose MySql. This link gave me simple instructions on how to install mysql [here](https://support.rackspace.com/how-to/installing-mysql-server-on-ubuntu/)
 
-###Create a custom Agent check 
+###Create a custom Agent check### 
 Creating a custom agent check is simple. Inside /etc/datadog-agent/checks.d create a python file. I named mine hello.py. Inside I wrote a python with an output that provides a random number 0 to 1000.
 
 ![picture](./img/3.png)
@@ -41,14 +40,13 @@ Once inside the yaml file check’s collection interval needs to be modified so 
 
 
 
-**Can you change the collection interval without modifying the Python check file you created? **
+**Can you change the collection interval without modifying the Python check file you created?**
 
-Yes. You can set a min interval option in the custom metric check. yaml file inside the conf.d directory. The name of the yaml file needs to match the name of your custom agent check python file in the checks.d directory. 
-    Ex: conf.d/smile.yaml and checks.d/smile.py
+Yes. You can set a min interval option in the custom metric check. yaml file inside the conf.d directory. The name of the yaml file needs to match the name of your custom agent check python file in the checks.d directory. Ex: conf.d/smile.yaml and checks.d/smile.py
 
- So really all that needs to be changes is in the yaml file.
+So really all that needs to be changes is in the yaml file.
 
-### Visualizing Data
+### Visualizing Data ###
 
 After installing Datadog on the VM I created timeboard.py file inside the /etc/datadog-agent folder. 
 It should look something like this:
@@ -73,6 +71,8 @@ My custom timeboard:
 My timeboard over a span of 5 seconds after I emailed myself with the @notation.
 ![picture](./img/8.png)
 
+![picture](./img/9.png)
+
 
 
 
@@ -82,13 +82,11 @@ The Anomaly graph detects data change based on past expressions of the informati
 
 
 
-### Monitoring Data
+### Monitoring Data###
 
 Data can be monitored from Datadog’s platform. 
  This is how I set mine up to keep an eye out for 500 warning threshold and 800 alert threshold and if no data is sent for 10 mins for my_metric using the Datadog UI:
 
-
-![picture](./img/9.png)
 
 ![picture](./img/10.png)
 
@@ -109,14 +107,14 @@ Downtime monitor for 7 pm to 9 am EST(11pm to 1pm UTC)
 
 
 
-### Collecting APM data
+### Collecting APM data###
 
 First we need to install flask onto our VM. Following Flask’s installation, we can use the flask app provided by the Datadog challenge. Using ddtrace to start the python script and then I hit the endpoints (ex. 0.0.0.0:5050/api/trace).
 
 
 
 
-Here is a link to my dashboard and a screen shot:  https://app.datadoghq.com/dash/856222/training-timeboard-for-hiring-engineers-exercise?live=true&page=0&is_auto=false&from_ts=1531179455884&to_ts=1531265855884&tile_size=m
+Here is a link to my dashboard and a [screen shot](https://app.datadoghq.com/dash/856222/training-timeboard-for-hiring-engineers-exercise?live=true&page=0&is_auto=false&from_ts=1531179455884&to_ts=1531265855884&tile_size=m)
 
 
 ![picture](./img/14.png)
